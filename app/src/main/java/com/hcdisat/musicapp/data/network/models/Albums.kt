@@ -1,13 +1,11 @@
 package com.hcdisat.musicapp.data.network.models
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class Albums(
-    @SerialName("data")
+    @SerializedName("data")
     val `data`: List<Album> = listOf(),
-    @SerialName("total")
+    @SerializedName("total")
     val total: Int = 0
 )

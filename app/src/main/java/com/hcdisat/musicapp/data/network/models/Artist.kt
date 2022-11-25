@@ -1,33 +1,31 @@
 package com.hcdisat.musicapp.data.network.models
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class Artist(
-    @SerialName("id")
+    @SerializedName("id")
     val id: Int = 0,
-    @SerialName("link")
+    @SerializedName("link")
     val link: String = "",
-    @SerialName("name")
+    @SerializedName("name")
     val name: String = "",
-    @SerialName("picture")
+    @SerializedName("picture")
     val picture: String = "",
-    @SerialName("picture_big")
+    @SerializedName("picture_big")
     val pictureBig: String = "",
-    @SerialName("picture_medium")
+    @SerializedName("picture_medium")
     val pictureMedium: String = "",
-    @SerialName("picture_small")
+    @SerializedName("picture_small")
     val pictureSmall: String = "",
-    @SerialName("picture_xl")
+    @SerializedName("picture_xl")
     val pictureXl: String = "",
-    @SerialName("position")
+    @SerializedName("position")
     val position: Int? = null,
-    @SerialName("radio")
+    @SerializedName("radio")
     val radio: Boolean = false,
-    @SerialName("tracklist")
+    @SerializedName("tracklist")
     val tracklist: String = "",
-    @SerialName("type")
+    @SerializedName("type")
     val type: String = ""
 )

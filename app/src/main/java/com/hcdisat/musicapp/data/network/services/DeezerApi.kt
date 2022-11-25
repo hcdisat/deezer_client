@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface DeezerApi {
     companion object {
-        private const val PATH = "charts/"
+        private const val PATH = "chart"
     }
 
     @GET(PATH)

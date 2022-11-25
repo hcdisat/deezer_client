@@ -1,18 +1,18 @@
 package com.hcdisat.musicapp.di.network
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import java.util.*
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-@OptIn(ExperimentalSerializationApi::class)
+@Module
+@InstallIn(SingletonComponent::class)
 class RetrofitModule {
 
     companion object {
@@ -20,15 +20,16 @@ class RetrofitModule {
         private const val BASE_URL = "https://api.deezer.com/"
     }
 
+    @Provides
     fun providesRetrofit(httpClient: OkHttpClient, retrofitBuilder: Retrofit.Builder): Retrofit =
         retrofitBuilder.client(httpClient).build()
 
+    @Provides
     fun providesRetrofitBuilder(): Retrofit.Builder =
         Retrofit.Builder()
-            .addConverterFactory(
-                Json.asConverterFactory("application/json".toMediaType())
-            ).baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).baseUrl(BASE_URL)
 
+    @Provides
     fun providesOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder().addInterceptor(interceptor)
             .callTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
@@ -36,6 +37,7 @@ class RetrofitModule {
             .writeTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS).build()
 
 
+    @Provides
     fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

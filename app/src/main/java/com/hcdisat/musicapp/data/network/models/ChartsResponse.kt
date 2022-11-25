@@ -1,14 +1,12 @@
 package com.hcdisat.musicapp.data.network.models
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class ChartsResponse(
-    @SerialName("albums")
+    @SerializedName("albums")
     val albums: Albums = Albums(),
-    @SerialName("tracks")
+    @SerializedName("tracks")
     val tracks: Tracks = Tracks(),
-    @SerialName("artists")
+    @SerializedName("artists")
     val artists: Artists = Artists(),
 )
