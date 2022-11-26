@@ -27,6 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -57,8 +62,12 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
