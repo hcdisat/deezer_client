@@ -2,7 +2,6 @@ package com.hcdisat.musicapp.data.network.models
 
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.Serializable
 
 data class Album(
     @SerializedName("cover")
@@ -17,6 +16,10 @@ data class Album(
     val coverXl: String = "",
     @SerializedName("id")
     val id: Int = 0,
+    @SerializedName("artist")
+    val artist: Artist = Artist(),
+    @SerializedName("position")
+    val position: Int = 0,
     @SerializedName("md5_image")
     val md5Image: String = "",
     @SerializedName("title")

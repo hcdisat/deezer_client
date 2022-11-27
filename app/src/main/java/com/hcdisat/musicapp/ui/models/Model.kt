@@ -1,9 +1,9 @@
-package com.hcdisat.musicapp.artistchart.models
+package com.hcdisat.musicapp.ui.models
 
-data class TracksChart(
-    val id: Int = 0,
+data class TracksChartItem(
+    val trackId: Int = 0,
     val artistId: Int,
-    val name: String = "",
+    val artistName: String = "",
     val position: Int = 0,
     val title: String = "",
     val rank: Int = 0,
@@ -17,4 +17,12 @@ data class ArtistChartItem(
     val picture: String = "",
     val position: Int = 0,
     val trackList: String = "",
+)
+
+data class AlbumChartItem(
+    val albumId: Int,
+    val artistId: Int,
+    val cover: String,
+    val position: Int,
+    val title: String,
 )

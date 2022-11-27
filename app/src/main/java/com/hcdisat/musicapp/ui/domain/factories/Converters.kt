@@ -1,0 +1,37 @@
+package com.hcdisat.musicapp.ui.domain.factories
+
+import com.hcdisat.musicapp.data.network.models.Album
+import com.hcdisat.musicapp.data.network.models.Artist
+import com.hcdisat.musicapp.data.network.models.Track
+import com.hcdisat.musicapp.ui.models.AlbumChartItem
+import com.hcdisat.musicapp.ui.models.ArtistChartItem
+import com.hcdisat.musicapp.ui.models.TracksChartItem
+
+fun Artist.toArtistChart() = ArtistChartItem(
+    artistId = id,
+    name = name,
+    picture = pictureSmall,
+    position = position ?: 0,
+    trackList = tracklist
+)
+
+fun Track.toTracksChartItem() =
+    TracksChartItem(
+        trackId = id,
+        artistId = artist.id,
+        artistName = artist.name,
+        position = position,
+        title = title,
+        rank = rank,
+        picture = md5Image
+    )
+
+fun Album.toAlbumChartItem() =
+    AlbumChartItem(
+        albumId = id,
+        artistId = artist.id,
+        cover = coverMedium,
+        position = position,
+        title = title
+    )
+

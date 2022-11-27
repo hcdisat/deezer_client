@@ -6,4 +6,5 @@
     <string name="tab_albums">Albums</string>
     <string name="artist_image">Artist Image</string>
     <string name="chart">Chart</string>
+    <string name="chart_artist_title">Artist</string>
 </resources>

@@ -65,6 +65,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
     kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
