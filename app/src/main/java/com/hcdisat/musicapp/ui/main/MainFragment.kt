@@ -31,10 +31,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.run {
-            ArtistChartFragment.newInstance().also {
-                navigateTo(it, ArtistChartFragment.TAG)
-            }
+        ArtistChartFragment.newInstance().also {
+            navigateTo(it, ArtistChartFragment.TAG)
         }
     }
 
