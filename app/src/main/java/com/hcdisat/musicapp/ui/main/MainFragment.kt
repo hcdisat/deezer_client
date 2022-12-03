@@ -10,12 +10,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.tabs.TabLayout
 import com.hcdisat.musicapp.R
 import com.hcdisat.musicapp.common.extensions.gone
 import com.hcdisat.musicapp.common.extensions.visible
 import com.hcdisat.musicapp.databinding.FragmentMainBinding
 import com.hcdisat.musicapp.ui.main.adapters.ArtistChartAdapter
 import com.hcdisat.musicapp.ui.main.common.extensions.addOnTabSelectedListener
+import com.hcdisat.musicapp.ui.main.common.extensions.toTabChartType
+import com.hcdisat.musicapp.ui.main.events.TabEvent
 import com.hcdisat.musicapp.ui.main.models.ChartType
 import com.hcdisat.musicapp.ui.main.models.ChartsUIState
 import com.hcdisat.musicapp.ui.main.models.StateData
@@ -48,13 +51,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val apply = binding.chartList.apply {
+        binding.chartList.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
 
-        binding.tabLayout.addOnTabSelectedListener {
-
-        }
+        binding.tabLayout.addOnTabSelectedListener(onTabSelected = ::onTabSelected)
 
         lifecycleScope.launch {
             viewModel.uiState.flowWithLifecycle(
@@ -117,5 +118,15 @@ class MainFragment : Fragment() {
             }
             ChartsUIState.Loading -> handleLoading(true)
         }
+    }
+
+    private fun onTabSelected(tab: TabLayout.Tab) {
+        val event = when (tab.position.toTabChartType()) {
+            ChartType.ARTISTS -> TabEvent.ArtistSelected
+            ChartType.TRACKS -> TabEvent.TracksSelected
+            ChartType.ALBUMS -> TabEvent.AlbumsSelected
+        }
+
+        viewModel.submitEvent(event)
     }
 }

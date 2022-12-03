@@ -50,11 +50,13 @@ class MainViewModel @Inject constructor(getCharts: GetChartsUseCase) : ViewModel
         }
     }
 
-    fun handleEvent(event: Events) {
+    private fun handleEvent(event: Events) {
         when (event) {
             AlbumsSelected -> selectedChartFlow.update { ChartType.ALBUMS }
             ArtistSelected -> selectedChartFlow.update { ChartType.ARTISTS }
             TracksSelected -> selectedChartFlow.update { ChartType.TRACKS }
         }
     }
+
+    fun submitEvent(event: Events) = handleEvent(event)
 }
