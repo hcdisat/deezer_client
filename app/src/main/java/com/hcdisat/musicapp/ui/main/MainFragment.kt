@@ -15,9 +15,10 @@ import com.hcdisat.musicapp.common.extensions.gone
 import com.hcdisat.musicapp.common.extensions.visible
 import com.hcdisat.musicapp.databinding.FragmentMainBinding
 import com.hcdisat.musicapp.ui.main.adapters.ArtistChartAdapter
-import com.hcdisat.musicapp.ui.models.ChartType
-import com.hcdisat.musicapp.ui.models.ChartsUIState
-import com.hcdisat.musicapp.ui.models.StateData
+import com.hcdisat.musicapp.ui.main.common.extensions.addOnTabSelectedListener
+import com.hcdisat.musicapp.ui.main.models.ChartType
+import com.hcdisat.musicapp.ui.main.models.ChartsUIState
+import com.hcdisat.musicapp.ui.main.models.StateData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -47,9 +48,14 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.chartList.apply {
+        val apply = binding.chartList.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
+
+        binding.tabLayout.addOnTabSelectedListener {
+
+        }
+
         lifecycleScope.launch {
             viewModel.uiState.flowWithLifecycle(
                 lifecycle,
@@ -66,14 +72,26 @@ class MainFragment : Fragment() {
     private fun loadAChart(stateData: StateData) {
         when (stateData.selectedChart) {
             ChartType.ARTISTS -> {
-                binding.tvSectionHeader.text = getString(R.string.chart_artist_title)
+                binding.tvSectionHeader.text = getString(R.string.tab_artists)
                 binding.chartList.apply {
                     artistChartAdapter.artistChartItems = stateData.artistChart
                     adapter = artistChartAdapter
                 }
             }
-            ChartType.TRACKS -> TODO()
-            ChartType.ALBUMS -> TODO()
+            ChartType.TRACKS -> {
+                binding.tvSectionHeader.text = getString(R.string.tab_tracks)
+                binding.chartList.apply {
+                    artistChartAdapter.artistChartItems = stateData.artistChart
+                    adapter = artistChartAdapter
+                }
+            }
+            ChartType.ALBUMS -> {
+                binding.tvSectionHeader.text = getString(R.string.tab_albums)
+                binding.chartList.apply {
+                    artistChartAdapter.artistChartItems = stateData.artistChart
+                    adapter = artistChartAdapter
+                }
+            }
         }
     }
 

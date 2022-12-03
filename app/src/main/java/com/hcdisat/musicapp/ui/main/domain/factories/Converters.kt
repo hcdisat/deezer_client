@@ -1,11 +1,11 @@
-package com.hcdisat.musicapp.ui.domain.factories
+package com.hcdisat.musicapp.ui.main.domain.factories
 
 import com.hcdisat.musicapp.data.network.models.Album
 import com.hcdisat.musicapp.data.network.models.Artist
 import com.hcdisat.musicapp.data.network.models.Track
-import com.hcdisat.musicapp.ui.models.AlbumChartItem
-import com.hcdisat.musicapp.ui.models.ArtistChartItem
-import com.hcdisat.musicapp.ui.models.TracksChartItem
+import com.hcdisat.musicapp.ui.main.models.AlbumChartItem
+import com.hcdisat.musicapp.ui.main.models.ArtistChartItem
+import com.hcdisat.musicapp.ui.main.models.TracksChartItem
 
 fun Artist.toArtistChart() = ArtistChartItem(
     artistId = id,

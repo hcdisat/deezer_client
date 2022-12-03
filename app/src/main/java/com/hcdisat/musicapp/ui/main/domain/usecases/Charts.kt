@@ -1,4 +1,4 @@
-package com.hcdisat.musicapp.ui.domain.usecases
+package com.hcdisat.musicapp.ui.main.domain.usecases
 
 import com.hcdisat.musicapp.data.network.models.Albums
 import com.hcdisat.musicapp.data.network.models.Artists

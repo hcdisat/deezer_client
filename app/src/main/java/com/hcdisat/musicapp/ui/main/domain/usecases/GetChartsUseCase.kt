@@ -1,4 +1,4 @@
-package com.hcdisat.musicapp.ui.domain.usecases
+package com.hcdisat.musicapp.ui.main.domain.usecases
 
 import com.hcdisat.musicapp.common.UseCaseResult
 import com.hcdisat.musicapp.data.network.repositories.HttpResult

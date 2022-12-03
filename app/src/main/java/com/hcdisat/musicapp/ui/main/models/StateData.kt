@@ -1,4 +1,4 @@
-package com.hcdisat.musicapp.ui.models
+package com.hcdisat.musicapp.ui.main.models
 
 data class StateData(
     val artistChart: List<ArtistChartItem>,

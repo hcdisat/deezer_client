@@ -2,7 +2,7 @@ package com.hcdisat.musicapp.ui.main.adapters.viewHolders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.hcdisat.musicapp.databinding.ChartArtistItemBinding
-import com.hcdisat.musicapp.ui.models.ArtistChartItem
+import com.hcdisat.musicapp.ui.main.models.ArtistChartItem
 import com.squareup.picasso.Picasso
 
 class ArtistChartViewHolder(

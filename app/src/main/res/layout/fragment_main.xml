@@ -83,7 +83,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chartList"
         android:layout_width="0dp"
@@ -111,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"></androidx.constraintlayout.helper.widget.Flow>
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flowHeader"

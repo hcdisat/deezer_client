@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hcdisat.musicapp.databinding.ChartArtistItemBinding
 import com.hcdisat.musicapp.ui.main.adapters.viewHolders.ArtistChartViewHolder
-import com.hcdisat.musicapp.ui.models.ArtistChartItem
+import com.hcdisat.musicapp.ui.main.models.ArtistChartItem
 import kotlin.properties.Delegates
 
 class ArtistChartAdapter : RecyclerView.Adapter<ArtistChartViewHolder>() {
