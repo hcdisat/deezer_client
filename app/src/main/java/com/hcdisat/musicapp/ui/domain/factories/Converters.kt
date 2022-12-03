@@ -10,7 +10,7 @@ import com.hcdisat.musicapp.ui.models.TracksChartItem
 fun Artist.toArtistChart() = ArtistChartItem(
     artistId = id,
     name = name,
-    picture = pictureSmall,
+    picture = pictureMedium,
     position = position ?: 0,
     trackList = tracklist
 )

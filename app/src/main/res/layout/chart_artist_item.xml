@@ -2,44 +2,53 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    tools:layout_margin="16dp"
+    app:cardCornerRadius="4dp"
+    android:layout_margin="16dp"
     app:cardElevation="10dp">
 
-
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/cover"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:scaleType="centerCrop"
+        android:layout_gravity="center"
         android:contentDescription="@string/artist_image"
-        app:srcCompat="@drawable/bb" />
+        tools:srcCompat="@drawable/bb" />
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_light"
-        android:gravity="end"
-        android:textSize="18sp"
-        android:paddingHorizontal="16dp"
-        android:padding="8dp"
-        android:background="@drawable/chart_name_background"
-        android:textColor="#e3e3e3"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
-        tools:text="Bad Bunny" />
+        android:background="@drawable/chart_name_background"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvPosition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:layout_marginEnd="16dp"
-        android:gravity="end"
-        android:padding="8dp"
-        android:textSize="94sp"
-        app:fontFamily="@font/roboto_light"
-        tools:text="2" />
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="8dp"
+            android:paddingHorizontal="16dp"
+            android:textColor="#e3e3e3"
+            android:textSize="14sp"
+            tools:text="Raw Alejandro" />
+
+        <TextView
+            android:id="@+id/tvPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:gravity="end"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:textColor="#e3e3e3"
+            android:textSize="18sp"
+            app:fontFamily="@font/anton"
+            tools:text="9" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </com.google.android.material.card.MaterialCardView>

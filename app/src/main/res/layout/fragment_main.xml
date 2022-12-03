@@ -11,21 +11,27 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimary"
+        app:tabIndicatorColor="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/chartList"
+        app:tabTextColor="@color/primaryTextColor">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tab_artists"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="73dp" />
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="-1dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tab_tracks" />
+            android:text="@string/tab_tracks"
+            tools:layout_editor_absoluteX="122dp"
+            tools:layout_editor_absoluteY="17dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -37,58 +43,88 @@
     <TextView
         android:id="@+id/tvChartHeader"
         style="@style/ChartHeader"
-        android:layout_width="282dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="7dp"
         android:text="@string/chart"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvSectionHeader"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvSectionHeader" />
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:indeterminateTintMode="src_atop"
-        tools:visibility="gone"
-        android:indeterminateTint="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/chartList"
+        app:layout_constraintEnd_toStartOf="@+id/chartList"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvSectionHeader"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvSectionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
-        android:textSize="40sp"
+        android:layout_marginBottom="2dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/chartList"
+        app:layout_constraintEnd_toStartOf="@+id/tvChartHeader"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chartList"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Artist"
+        style="@style/ChartSectionHeader" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="?attr/colorPrimary"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        tools:text="Artist" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chartList"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSectionHeader"
+        app:layout_constraintTop_toBottomOf="@+id/tvChartHeader"
         tools:itemCount="5"
         tools:listitem="@layout/chart_artist_item" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="flowHeader,chartList,tabLayout"
+        app:flow_maxElementsWrap="3"
+        app:flow_verticalGap="2dp"
+        app:flow_verticalStyle="spread_inside"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowHeader"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:visibility="visible"
-        android:visibility="gone"
-        app:constraint_referenced_ids="chartList,tvChartHeader,tvSectionHeader,tabLayout" />
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="tvSectionHeader,tvChartHeader"
+        app:flow_horizontalGap="16dp"
+        app:flow_horizontalStyle="spread_inside"
+        app:flow_maxElementsWrap="2"
+        app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSectionHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
